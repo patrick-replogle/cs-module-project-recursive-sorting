@@ -24,4 +24,29 @@ print(binary_search(arr, 7, 0, len(arr) - 1))
 # You can implement this function either recursively
 # or iteratively
 def agnostic_binary_search(arr, target):
-    pass
+    start = 0
+    end = len(arr) - 1
+
+    if arr[0] < arr[len(arr)-1]:
+        while start <= end:
+            mid = (start + end) // 2
+
+            if arr[mid] == target:
+                return mid
+            elif arr[mid] < target:
+                start = mid + 1
+            elif arr[mid] > target:
+                end = mid - 1
+        return -1
+
+    elif arr[0] > arr[len(arr) - 1]:
+        while start <= end:
+            mid = (start + end) // 2
+
+            if arr[mid] == target:
+                return mid
+            elif arr[mid] < target:
+                end = mid - 1
+            elif arr[mid] > target:
+                start = mid + 1
+        return -1
