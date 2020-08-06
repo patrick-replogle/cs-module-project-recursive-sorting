@@ -50,3 +50,10 @@ def agnostic_binary_search(arr, target):
             elif arr[mid] > target:
                 start = mid + 1
         return -1
+
+
+ascending = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+descending = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
+
+print(agnostic_binary_search(ascending, 4))
+print(agnostic_binary_search(descending, 6))
