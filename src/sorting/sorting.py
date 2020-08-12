@@ -46,26 +46,29 @@ def merge_in_place(arr, start, mid, end):
 
     while start <= mid and start2 <= end:
         if arr[start] > arr[start2]:
-            temp = arr[start]
-            index = start
+            value = arr[start2]
+            index = start2
 
-            while index != start2:
-                arr[index] = arr[index+1]
-                index += 1
+            while index != start:
+                arr[index] = arr[index-1]
+                index -= 1
 
-            arr[start2] = temp
+            arr[start] = value
+            start += 1
+            start2 += 1
+            mid += 1
+
         else:
             start += 1
 
 
 def merge_sort_in_place(arr, l, r):
     if l < r:
-        m = l + (r - l) // 2
+        mid = l + (r - l) // 2
+        merge_sort_in_place(arr, l, mid)
+        merge_sort_in_place(arr, mid + 1, r)
 
-        merge_sort_in_place(arr, l, m)
-        merge_sort_in_place(arr, m + 1, r)
-
-        merge_in_place(arr, l, m, r)
+        merge_in_place(arr, l, mid, r)
 
 
 arr = [5, 2, 3, 10, 9, 2]
